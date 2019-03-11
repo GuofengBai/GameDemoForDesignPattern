@@ -2,11 +2,15 @@ package cn.edu.nju.Entity;
 
 public class CharactorAttribute implements AttributeDecorator {
 
+    private Double fullHp=100.0;
+
     //生命值
-    private Double hp=10.0;
+    private Double hp=fullHp;
+
+    private Double fullMp=100.0;
 
     //魔法值
-    private Double mp=10.0;
+    private Double mp=fullMp;
 
     //防御力——劈砍攻击
     private Double def_chop=10.0;
@@ -38,8 +42,10 @@ public class CharactorAttribute implements AttributeDecorator {
     public CharactorAttribute() {
     }
 
-    public CharactorAttribute(Double hp, Double mp, Double def_chop, Double def_stab, Double def_crush, Double def_ice, Double def_flame, Double def_earth, Double def_lightning, Double ap, Double accuracy) {
+    public CharactorAttribute(Double fullHp, Double hp, Double fullMp, Double mp, Double def_chop, Double def_stab, Double def_crush, Double def_ice, Double def_flame, Double def_earth, Double def_lightning, Double ap, Double accuracy) {
+        this.fullHp = fullHp;
         this.hp = hp;
+        this.fullMp = fullMp;
         this.mp = mp;
         this.def_chop = def_chop;
         this.def_stab = def_stab;
@@ -48,8 +54,8 @@ public class CharactorAttribute implements AttributeDecorator {
         this.def_flame = def_flame;
         this.def_earth = def_earth;
         this.def_lightning = def_lightning;
-        this.ap=ap;
-        this.accuracy=accuracy;
+        this.ap = ap;
+        this.accuracy = accuracy;
     }
 
     @Override
@@ -82,6 +88,22 @@ public class CharactorAttribute implements AttributeDecorator {
                 return 1.0;
         }
 
+    }
+
+    public Double getFullHp() {
+        return fullHp;
+    }
+
+    public void setFullHp(Double fullHp) {
+        this.fullHp = fullHp;
+    }
+
+    public Double getFullMp() {
+        return fullMp;
+    }
+
+    public void setFullMp(Double fullMp) {
+        this.fullMp = fullMp;
     }
 
     public Double getHp() {
