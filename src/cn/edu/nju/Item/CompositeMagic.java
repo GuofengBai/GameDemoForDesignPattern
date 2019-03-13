@@ -51,4 +51,20 @@ public class CompositeMagic implements Magic {
         return sum*0.95;
     }
 
+    @Override
+    public Integer getLevel() {
+        int sum=0;
+        for(Magic magic: composite){
+            sum+=magic.getLevel();
+        }
+        return sum;
+    }
+
+    @Override
+    public void levelUp() {
+        for(Magic magic: composite){
+            magic.levelUp();
+        }
+    }
+
 }

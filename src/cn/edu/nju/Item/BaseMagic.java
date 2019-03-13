@@ -10,6 +10,8 @@ public class BaseMagic implements Magic {
 
     private Double consumedMp;
 
+    private Integer level = 1;
+
     public BaseMagic(Map<String, Double> value, String name, Double consumedMp) {
         this.value = value;
         this.name = name;
@@ -39,6 +41,19 @@ public class BaseMagic implements Magic {
     @Override
     public Double getConsumedMp() {
         return consumedMp;
+    }
+
+    @Override
+    public Integer getLevel() {
+        return level;
+    }
+
+    @Override
+    public void levelUp() {
+        level++;
+        for(String key: value.keySet()){
+            value.put(key, value.get(key)*1.02);
+        }
     }
 
 }

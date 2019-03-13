@@ -16,4 +16,8 @@ public interface Magic {
     //消耗魔法值
     Double getConsumedMp();
 
+    Integer getLevel();
+
+    void levelUp();
+
 }
