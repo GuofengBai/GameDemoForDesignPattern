@@ -2,7 +2,11 @@ package cn.edu.nju.Entity;
 
 import cn.edu.nju.Item.Magic;
 
-public interface CharactorType {
+import java.util.Map;
+
+public interface CharacterType {
+
+    String getType();
 
     Integer levelUp();
 
@@ -10,5 +14,7 @@ public interface CharactorType {
     Double weaponAttack(Character enemy);
 
     Double magicAttack(Magic magic, Character enemy);
+
+    Double valueAttack(Map<String, Double> hurts, Character enemy);
 
 }

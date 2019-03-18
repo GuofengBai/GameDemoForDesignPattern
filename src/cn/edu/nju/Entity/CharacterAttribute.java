@@ -1,6 +1,6 @@
 package cn.edu.nju.Entity;
 
-public class CharactorAttribute implements AttributeDecorator {
+public class CharacterAttribute implements AttributeDecorator {
 
     private Double fullHp=100.0;
 
@@ -39,10 +39,10 @@ public class CharactorAttribute implements AttributeDecorator {
     //命中率
     private Double accuracy=0.4;
 
-    public CharactorAttribute() {
+    public CharacterAttribute() {
     }
 
-    public CharactorAttribute(Double fullHp, Double hp, Double fullMp, Double mp, Double def_chop, Double def_stab, Double def_crush, Double def_ice, Double def_flame, Double def_earth, Double def_lightning, Double ap, Double accuracy) {
+    public CharacterAttribute(Double fullHp, Double hp, Double fullMp, Double mp, Double def_chop, Double def_stab, Double def_crush, Double def_ice, Double def_flame, Double def_earth, Double def_lightning, Double ap, Double accuracy) {
         this.fullHp = fullHp;
         this.hp = hp;
         this.fullMp = fullMp;
@@ -90,12 +90,29 @@ public class CharactorAttribute implements AttributeDecorator {
 
     }
 
+    public void evenlyLevelUp(){
+        fullHp*=1.05;
+        hp=fullHp;
+        fullMp*=1.05;
+        mp=fullMp;
+        def_chop*=1.05;
+        def_stab*=1.05;
+        def_crush*=1.05;
+        def_ice*=1.05;
+        def_flame*=1.05;
+        def_earth*=1.05;
+        def_lightning*=1.05;
+        ap*=1.05;
+        accuracy=Math.min(1.0, accuracy*1.05);
+    }
+
     public Double getFullHp() {
         return fullHp;
     }
 
     public void setFullHp(Double fullHp) {
         this.fullHp = fullHp;
+        this.hp=fullHp;
     }
 
     public Double getFullMp() {
@@ -104,6 +121,7 @@ public class CharactorAttribute implements AttributeDecorator {
 
     public void setFullMp(Double fullMp) {
         this.fullMp = fullMp;
+        this.mp=fullMp;
     }
 
     public Double getHp() {
