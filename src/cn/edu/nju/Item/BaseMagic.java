@@ -30,7 +30,7 @@ public class BaseMagic implements Magic {
 
     @Override
     public String getName() {
-        return name;
+        return level+"级"+name;
     }
 
     @Override

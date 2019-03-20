@@ -4,8 +4,7 @@ import cn.edu.nju.Item.Equipment;
 import cn.edu.nju.Item.Magic;
 import cn.edu.nju.Item.NullEquipment;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Character {
 
@@ -31,10 +30,17 @@ public class Character {
 
     private Double experience;
 
-    public Character(CharacterAttribute baseAttr, CharacterType characterType){
+    private Double money = 100.0;
+
+    private List<Magic> magics = new ArrayList<>();
+
+    public Character(CharacterAttribute baseAttr){
         this.baseAttr=baseAttr;
-        this.characterType = characterType;
         constructFinalAttr();
+    }
+
+    public void setCharacterType(CharacterType characterType){
+        this.characterType=characterType;
     }
 
 
@@ -81,13 +87,16 @@ public class Character {
         return characterType.magicAttack(magic, enemy);
     }
 
-
     public CharacterAttribute getBaseAttr() {
         return baseAttr;
     }
 
     public String getType(){
         return characterType.getType();
+    }
+
+    public CharacterType getCharacterType(){
+        return characterType;
     }
 
     public void setBaseAttr(CharacterAttribute baseAttr) {
@@ -133,6 +142,30 @@ public class Character {
 
     public void setMp(Double mp){
         baseAttr.setMp(mp);
+    }
+
+    public Double getMoney() {
+        return money;
+    }
+
+    public void setMoney(Double money) {
+        this.money = money;
+    }
+
+    public Integer typeRestriction(Character enemy){
+        return characterType.typeRestriction(enemy.getCharacterType());
+    }
+
+    public Integer levelUp(){
+        return characterType.levelUp();
+    }
+
+    public Iterator<Magic> getMagics(){
+        return magics.iterator();
+    }
+
+    public void addMagic(Magic magic){
+        magics.add(magic);
     }
 
 }

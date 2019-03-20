@@ -7,4 +7,9 @@ public class Battle {
     //战斗胜利获得的经验
     private Double experience;
 
+    private Double bonusMoney;
+
+    public Battle() {
+    }
+
 }

@@ -17,4 +17,6 @@ public interface CharacterType {
 
     Double valueAttack(Map<String, Double> hurts, Character enemy);
 
+    Integer typeRestriction(CharacterType characterType);
+
 }

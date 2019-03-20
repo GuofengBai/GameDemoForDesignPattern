@@ -19,7 +19,7 @@ public class MageCharacterType implements CharacterType {
 
     @Override
     public Integer levelUp() {
-        Double cost = Math.pow(1.2, owner.getLevel());
+        Double cost = 10*Math.pow(1.2, owner.getLevel());
         if(cost<owner.getExperience()){
             owner.setLevel(owner.getLevel()+1);
             CharacterAttribute baseAttr = owner.getBaseAttr();
@@ -70,6 +70,17 @@ public class MageCharacterType implements CharacterType {
             return totalHurt;
         }else{
             return -1.0;
+        }
+    }
+
+    @Override
+    public Integer typeRestriction(CharacterType characterType) {
+        if(characterType instanceof AssassinCharacterType){
+            return -1;
+        }else if(characterType instanceof KnightCharacterType){
+            return 1;
+        }else{
+            return 0;
         }
     }
 }
