@@ -76,8 +76,7 @@ public class Battle extends Observable {
             notifyObservers(information);
             Variable.setCurrentBattle(null);
         }
-    };
-
+    }
 
     public void enemyTurn(){
         if(!playerTurn){
