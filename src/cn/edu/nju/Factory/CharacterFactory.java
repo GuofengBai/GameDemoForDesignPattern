@@ -5,8 +5,10 @@ import cn.edu.nju.Entity.Character;
 import cn.edu.nju.Item.Equipment;
 import cn.edu.nju.Item.Weapon;
 
+import java.util.Random;
+
 //此工厂负责生产人物，使用工厂模式与单例模式
-class CharacterFactory {
+public class CharacterFactory {
 
     private static CharacterFactory instance = new CharacterFactory();
 
@@ -17,10 +19,13 @@ class CharacterFactory {
         return instance;
     }
 
-    public Character createCharacter(String name, Integer level, String type){
+    public Character createCharacter(String name, Integer level){
         CharacterAttribute characterAttribute = new CharacterAttribute();
         Character character = new Character(characterAttribute);
         CharacterType characterType;
+        String[] types = new String[]{"assassin","knight","mage"};
+        Random random = new Random();
+        String type = types[random.nextInt(3)];
         if(type.equals("assassin")){
             characterType = new AssassinCharacterType(character);
         }else if(type.equals("knight")){
