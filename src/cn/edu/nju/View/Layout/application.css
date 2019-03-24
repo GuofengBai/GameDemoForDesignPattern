@@ -1,0 +1,35 @@
+
+
+.shinyButton {
+    -fx-background-color:
+            #ECECEC,
+            linear-gradient(#ECECEC 50%, #D5D5D5 100%),
+            radial-gradient(center 50% -40%, radius 200%, #ECECEC 45%, #D5D5D5 50%);
+    -fx-background-radius: 10;
+    -fx-background-insets: 0,1,1;
+    -fx-text-fill: black;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
+}
+
+
+/*.table-view .table-row-cell {*/
+    /*-fx-background-insets: 0;*/
+/*}*/
+/*!*table的单元之间有明显的横线分割*!*/
+
+/*.table-row-cell:empty .table-cell {*/
+    /*-fx-border-width: 0px;*/
+/*}*/
+/*!*若想同时去掉没有数据的竖线*!*/
+
+.progress-bar {-fx-box-border:goldenrod; }
+
+.blue-bar {
+    -fx-accent:blue;
+}
+.yellow-bar {
+    -fx-accent:yellow;
+}
+.green-bar {-fx-accent:green; }
+.orange-bar {-fx-accent:orange; }
+.red-bar {-fx-accent:red; }

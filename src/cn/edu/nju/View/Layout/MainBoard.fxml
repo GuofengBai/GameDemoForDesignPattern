@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane fx:id="rootLayoutInGameBoard" dividerPositions="0.6929096989966556" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.edu.nju.Controller.SingleGameController">
+  <items>
+
+      <SplitPane dividerPositions="0.8762311557788944" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+        <items>
+            <BorderPane maxWidth="1000" minWidth="700" prefHeight="550.0" prefWidth="700.0" style="-fx-background-image:  url(/cn/edu/nju/View/Layout/res/game_black.jpg); -fx-background-size: 800">
+               <left>
+                  <HBox alignment="TOP_LEFT" maxWidth="200" minWidth="200" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-radius: 80">
+
+                            <image>
+                                <Image url="/cn/edu/nju/View/Layout/res/avater1.png" />
+                            </image>
+                        </ImageView>
+
+
+                        <VBox prefHeight="50.0" prefWidth="200.0">
+
+                           <children>
+                              <Label text="烤面包杀手" textFill="#f20808" />
+                               <ProgressBar fx:id="myHp1" prefWidth="200.0" progress="0.15" style="-fx-accent:red" />
+                              <ProgressBar fx:id="myHp2" prefWidth="200.0" progress="0.6" styleClass="blue-bar" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </left>
+               <right>
+                   <HBox alignment="TOP_RIGHT" maxWidth="200" minWidth="200" prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                       <children>
+
+
+                           <VBox nodeOrientation="RIGHT_TO_LEFT" prefHeight="50.0" prefWidth="200.0">
+
+                               <children>
+                                   <Label text="Boss" textFill="#eb0303" />
+                                   <ProgressBar fx:id="emHp1" prefWidth="200.0" progress="0.23" style="-fx-accent:red" />
+                                   <ProgressBar fx:id="emHp2" prefWidth="200.0" progress="0.69" styleClass="blue-bar" />
+                               </children>
+                           </VBox>
+                           <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" style="-fx-border-radius: 80">
+
+                               <image>
+                                   <Image url="/cn/edu/nju/View/Layout/res/avater2.png" />
+                               </image>
+                           </ImageView>
+                       </children>
+                   </HBox>
+               </right>
+               <bottom>
+                   <HBox prefHeight="300.0" prefWidth="780.0">
+                       <children>
+                           <Pane  prefHeight="200.0" prefWidth="50.0" />
+                           <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+
+                               <image>
+                                   <Image url="/cn/edu/nju/View/Layout/res/battle1.png" />
+                               </image>
+                           </ImageView>
+                           <Pane fx:id="magic" prefHeight="200.0" prefWidth="350.0" />
+
+                           <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                               <image>
+                                   <Image url="/cn/edu/nju/View/Layout/res/battle2.png" />
+                               </image>
+
+                           </ImageView>
+                       </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                   </HBox>
+               </bottom>
+            </BorderPane>
+            <HBox maxHeight="50" maxWidth="1000" minHeight="0" minWidth="700" prefHeight="100.0" prefWidth="800.0" style="-fx-spacing: 3;">
+                <children>
+                    <ImageView fitHeight="50.0" fitWidth="50.0" onMouseClicked="#useMagic" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="/cn/edu/nju/View/Layout/res/equip1.png" />
+                        </image>
+                    </ImageView>
+                    <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="/cn/edu/nju/View/Layout/res/equip2.png" />
+                        </image>
+                    </ImageView>
+                    <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="/cn/edu/nju/View/Layout/res/equip3.png" />
+                        </image>
+                    </ImageView>
+                    <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="/cn/edu/nju/View/Layout/res/equip4.png" />
+                        </image>
+                    </ImageView>
+                    <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="/cn/edu/nju/View/Layout/res/equip1.png" />
+                        </image>
+                    </ImageView>
+                    <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="/cn/edu/nju/View/Layout/res/equip5.png" />
+                        </image>
+                    </ImageView>
+
+
+                </children></HBox>
+        </items>
+      </SplitPane>
+      <BorderPane minHeight="0" minWidth="0" prefHeight="200.0" prefWidth="80.0">
+         <left>
+            <VBox prefHeight="200.0" prefWidth="50.0" style="-fx-spacing: 3;" BorderPane.alignment="TOP_LEFT">
+               <children>
+                <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                   <image>
+                       <Image url="/cn/edu/nju/View/Layout/res/equip1.png" />
+                   </image>
+               </ImageView>
+                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                       <image>
+                           <Image url="/cn/edu/nju/View/Layout/res/equip2.png" />
+                       </image>
+                   </ImageView>
+                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                       <image>
+                           <Image url="/cn/edu/nju/View/Layout/res/equip3.png" />
+                       </image>
+                   </ImageView>
+                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                       <image>
+                           <Image url="/cn/edu/nju/View/Layout/res/equip4.png" />
+                       </image>
+                   </ImageView>
+                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                       <image>
+                           <Image url="/cn/edu/nju/View/Layout/res/equip5.png" />
+                       </image>
+                   </ImageView>
+                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                       <image>
+                           <Image url="/cn/edu/nju/View/Layout/res/equip6.png" />
+                       </image>
+                   </ImageView>
+
+
+               </children></VBox>
+         </left>
+
+
+         <right>
+             <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="50.0" style="-fx-spacing: 3;" BorderPane.alignment="TOP_RIGHT">
+                 <children>
+                     <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                         <image>
+                             <Image url="/cn/edu/nju/View/Layout/res/equip2.png" />
+                         </image>
+                     </ImageView>
+                     <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                         <image>
+                             <Image url="/cn/edu/nju/View/Layout/res/equip3.png" />
+                         </image>
+                     </ImageView>
+
+                     <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                         <image>
+                             <Image url="/cn/edu/nju/View/Layout/res/equip4.png" />
+                         </image>
+                     </ImageView>
+
+
+
+                 </children></VBox>
+         </right>
+         <top>
+            <Label alignment="TOP_CENTER" prefHeight="50" text="当前等级 20" textAlignment="CENTER" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+         </top>
+         <center>
+            <ImageView fitHeight="600.0" fitWidth="200.0" pickOnBounds="false" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="/cn/edu/nju/View/Layout/res/battle1.png" />
+               </image>
+            </ImageView>
+         </center>
+         <bottom>
+            <TableView fx:id="playerTable" editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+              <columns>
+                <TableColumn fx:id="playerTableColumn1" prefWidth="140.0" text="属性" />
+                <TableColumn fx:id="playerTableColumn2" prefWidth="147.0" text="value" />
+              </columns>
+            </TableView>
+         </bottom>
+
+      </BorderPane>
+  </items>
+</SplitPane>

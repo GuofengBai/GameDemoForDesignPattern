@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="rootLayout" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-image: url(/cn/edu/nju/View/Layout/res/welcome.jpg); -fx-background-size: 1000px;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cn.edu.nju.Controller.WelcomeController">
+   <children>
+      <VBox alignment="CENTER" layoutX="564.0" layoutY="314.0" prefHeight="200.0" prefWidth="300.0" style="-fx-spacing: 10;">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label contentDisplay="TEXT_ONLY" text="起个江湖名号  ：" />
+                  <TextField fx:id="namefield" prefWidth="100" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="选择江湖角色  ：" />
+                  <ChoiceBox fx:id="choiceType" prefWidth="100.0" />
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#beginSingleGame" styleClass="shinyButton" text="擂台升级模式" />
+            <Button mnemonicParsing="false" onAction="#beginDoubleGame" styleClass="shinyButton" text="联网双人对战" />
+            <Button mnemonicParsing="false" onAction="#exit" styleClass="shinyButton" text="退出不存档哦" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+   </children>
+</AnchorPane>
