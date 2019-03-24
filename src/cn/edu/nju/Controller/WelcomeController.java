@@ -1,5 +1,8 @@
 package cn.edu.nju.Controller;
 
+import cn.edu.nju.Entity.Character;
+import cn.edu.nju.Factory.CharacterFactory;
+import cn.edu.nju.Variable.Variable;
 import cn.edu.nju.View.SingleGameBoard;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,6 +15,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class WelcomeController implements Initializable{
@@ -26,7 +31,8 @@ public class WelcomeController implements Initializable{
 
     private  ObservableList<String> types =
             FXCollections.observableArrayList(
-                    "选择你的职业","战士","火系法师","水系法师","雷系法师","土系法师","战士","弓箭手");
+                    "assassin","knight","mage");
+
 
 
     public void exit(ActionEvent actionEvent) {
@@ -44,12 +50,16 @@ public class WelcomeController implements Initializable{
         Stage stage = (Stage) rootLayout.getScene().getWindow();
 
         //存name和type
+
+        Character player =CharacterFactory.getInstance().createCharacter(namefield.getText(),choiceType.getValue(),1);
+        Variable.setPlayer(player);
+
         try {
             new SingleGameBoard().start(new Stage());
         } catch (Exception e) {
             e.printStackTrace();
         }
-        stage.hide();
+        stage.close();
 
     }
 

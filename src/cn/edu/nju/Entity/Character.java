@@ -26,7 +26,7 @@ public class Character {
 
     private String name;
 
-    private Integer level;
+    private Integer level = 1;
 
     private Double experience;
 

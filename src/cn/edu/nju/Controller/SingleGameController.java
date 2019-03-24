@@ -1,6 +1,12 @@
 package cn.edu.nju.Controller;
 
+import cn.edu.nju.Entity.Battle;
+import cn.edu.nju.Entity.Character;
 import cn.edu.nju.Entity.TableVO;
+import cn.edu.nju.Item.Magic;
+import cn.edu.nju.Variable.Variable;
+import cn.edu.nju.View.Main;
+import cn.edu.nju.View.SingleGameBoard;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -23,11 +29,12 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 
 
-public class SingleGameController implements EventHandler<KeyEvent>,Initializable {
+public class SingleGameController implements EventHandler<KeyEvent>,Initializable,Observer {
 
+    Stage stage;
     @FXML
     private SplitPane rootLayoutInGameBoard;
 
@@ -45,7 +52,7 @@ public class SingleGameController implements EventHandler<KeyEvent>,Initializabl
     @FXML
     private ProgressBar emHp1;
     @FXML
-    private ProgressBar emhp2;
+    private ProgressBar emHp2;
     @FXML
     private Pane magic;
 
@@ -56,13 +63,26 @@ public class SingleGameController implements EventHandler<KeyEvent>,Initializabl
     private static final String GREEN_BAR ="green-bar";
     private static final String [] barColorStyleClasses = {RED_BAR,ORANGE_BAR,YELLOW_BAR,GREEN_BAR};
 
+    Map<String,String> attributeMap = new HashMap<String,String>(){
+        {
+            put("def_chop","防御力——劈砍攻击") ;
+            put("def_stab","防御力——刺击攻击") ;
+            put("def_crush","防御力——钝击攻击") ;
+            put("def_ice","防御力——冰属性魔法") ;
+            put("def_flame","防御力——火属性魔法") ;
+            put("def_earth","防御力——土属性魔法") ;
+            put("def_lightning","防御力——雷属性魔法") ;
+            put("accuracy","命中率") ;
+            put("chop","劈砍攻击") ;
+            put("stab","刺击攻击") ;
+            put("crush","钝击攻击") ;
+
+        }
+    };
 
 
 private  ObservableList<TableVO> data =
-            FXCollections.observableArrayList(
-                    new TableVO("敏捷值" ,"180"),new TableVO("幸运值" ,"120"),
-                    new TableVO("力量值" ,"300")
-                    ,new TableVO("洞察力" ,"500"));
+            FXCollections.observableArrayList();
 
 
 
@@ -71,7 +91,7 @@ private  ObservableList<TableVO> data =
     public void handle(KeyEvent event) {
         if (event.getCode() == KeyCode.ESCAPE) {
             //这里是取到Stage的具体代码
-            Stage stage = (Stage) rootLayoutInGameBoard.getScene().getWindow();
+
 //            stage.hide();
 
 
@@ -81,7 +101,21 @@ private  ObservableList<TableVO> data =
 
     @Override
      public void initialize(URL url, ResourceBundle rb) {
-         showList();
+
+
+
+
+
+
+//        stage = (Stage) rootLayoutInGameBoard.getScene().getWindow();
+        Variable.setInformationBoard(this);
+        Battle.createBattle();
+
+        showList();
+
+        Iterator<Magic> list = Variable.getPlayer().getMagics();
+
+
 
         myHp1.progressProperty().addListener(new ChangeListener<Number>() {
             @Override
@@ -102,7 +136,7 @@ private  ObservableList<TableVO> data =
                 bar.getStyleClass().add(barStyleClass);
             }
         });
-        myHp1.setProgress(0.99);
+        myHp1.setProgress(0.9);
     }
 
     private void showList() {
@@ -116,12 +150,50 @@ private  ObservableList<TableVO> data =
 
 
     public void useMagic(MouseEvent mouseEvent) {
-        Image image = new Image("cn/edu/nju/View/Layout/res/test.gif");
-        ImageView imageView = new ImageView();
-        imageView.setImage(image);
-        magic.getChildren().add(imageView);
+//        Image image = new Image("cn/edu/nju/View/Layout/res/test.gif");
+//        ImageView imageView = new ImageView();
+//        imageView.setImage(image);
+//        magic.getChildren().add(imageView);
+
+        Variable.getCurrentBattle().playerWeaponTurn();
+        if(Variable.getCurrentBattle()==null){
+            System.out.println("done");
+//            if(Variable.getPlayer()==null){
+//                try {
+//                    new Main().start(new Stage());
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                stage.close();
+//            }
+
+        }else{
+            setHp();
+        }
 
 
 
+    }
+
+    private void setHp(){
+        Double em_hp =Variable.getCurrentBattle().getEnemy().getAttribute("hp")/Variable.getCurrentBattle().getEnemy().getAttribute("fullHp");
+        Double my_hp =Variable.getPlayer().getAttribute("hp")/Variable.getPlayer().getAttribute("fullHp");
+
+
+
+        Double em_mp =Variable.getCurrentBattle().getEnemy().getAttribute("mp")/Variable.getCurrentBattle().getEnemy().getAttribute("fullMp");
+        Double my_mp =Variable.getPlayer().getAttribute("mp")/Variable.getPlayer().getAttribute("fullMp");
+
+        Character p = Variable.getPlayer();
+        myHp1.setProgress(my_hp);
+        myHp2.setProgress(my_mp);
+
+        emHp1.setProgress(em_hp);
+        emHp2.setProgress(em_mp);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        System.out.println(arg.toString());
     }
 }

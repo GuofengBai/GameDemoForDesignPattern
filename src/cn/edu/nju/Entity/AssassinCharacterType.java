@@ -40,7 +40,7 @@ public class AssassinCharacterType implements CharacterType {
         if(nmp<0){
             return -2.0;
         }else{
-            enemy.setMp(nmp);
+            owner.setMp(nmp);
             return valueAttack(magic.getValue(),enemy);
         }
     }

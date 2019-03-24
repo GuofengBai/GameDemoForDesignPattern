@@ -64,6 +64,10 @@ public class CharacterAttribute implements AttributeDecorator {
         switch (attrName){
             case "hp":
                 return getHp();
+            case "fullHp":
+                return getFullHp();
+            case "fullMp":
+                return getFullMp();
             case "mp":
                 return getMp();
             case "def_chop":

@@ -20,12 +20,17 @@ public class CharacterFactory {
     }
 
     public Character createCharacter(String name, Integer level){
-        CharacterAttribute characterAttribute = new CharacterAttribute();
-        Character character = new Character(characterAttribute);
-        CharacterType characterType;
+
         String[] types = new String[]{"assassin","knight","mage"};
         Random random = new Random();
         String type = types[random.nextInt(3)];
+        return createCharacter(name,type,level);
+    }
+
+    public Character createCharacter(String name, String type,Integer level){
+        CharacterAttribute characterAttribute = new CharacterAttribute();
+        Character character = new Character(characterAttribute);
+        CharacterType characterType;
         if(type.equals("assassin")){
             characterType = new AssassinCharacterType(character);
         }else if(type.equals("knight")){
@@ -48,6 +53,8 @@ public class CharacterFactory {
         character.addMagic(MagicFactory.getInstance().createBaseMagic("earth",level));
         character.addMagic(MagicFactory.getInstance().createBaseMagic("lightning",level));
         return character;
+
     }
+
 
 }

@@ -75,6 +75,7 @@ public class Battle extends Observable {
             setChanged();
             notifyObservers(information);
             Variable.setCurrentBattle(null);
+            Variable.setPlayer(null);
         }
     }
 
@@ -175,5 +176,38 @@ public class Battle extends Observable {
                 end(result);
             }
         }
+    }
+
+
+    public Character getEnemy() {
+        return enemy;
+    }
+
+    public void setEnemy(Character enemy) {
+        this.enemy = enemy;
+    }
+
+    public Double getExperience() {
+        return experience;
+    }
+
+    public void setExperience(Double experience) {
+        this.experience = experience;
+    }
+
+    public Double getBonusMoney() {
+        return bonusMoney;
+    }
+
+    public void setBonusMoney(Double bonusMoney) {
+        this.bonusMoney = bonusMoney;
+    }
+
+    public boolean isPlayerTurn() {
+        return playerTurn;
+    }
+
+    public void setPlayerTurn(boolean playerTurn) {
+        this.playerTurn = playerTurn;
     }
 }
