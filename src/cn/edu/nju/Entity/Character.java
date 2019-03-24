@@ -160,12 +160,68 @@ public class Character {
         return characterType.levelUp();
     }
 
+    public Boolean canLevelUp(){
+        return 10*Math.pow(1.2, getLevel())<getExperience();
+    }
+
     public Iterator<Magic> getMagics(){
         return magics.iterator();
     }
 
     public void addMagic(Magic magic){
         magics.add(magic);
+    }
+
+    public Map<String,Double> getDecoratedAttributes(){
+        Map<String, Double> attr = new HashMap<>();
+        attr.put("def_chop",getAttribute("def_chop"));
+        attr.put("def_stab",getAttribute("def_stab"));
+        attr.put("def_crush",getAttribute("def_crush"));
+        attr.put("def_ice",getAttribute("def_crush"));
+        attr.put("def_flame",getAttribute("def_flame"));
+        attr.put("def_earth",getAttribute("def_earth"));
+        attr.put("def_lightning",getAttribute("def_lightning"));
+        attr.put("accuracy",getAttribute("accuracy"));
+        return attr;
+    }
+
+    public boolean canWeaponLevelUp(){
+        return getWeapon().getLevel()*10<getMoney();
+    }
+
+    public boolean weaponLevelUp(){
+        if(canWeaponLevelUp()){
+            setMoney(getMoney()-getWeapon().getLevel()*10);
+            getWeapon().levelUp();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean canArmourLevelUp(){
+        return getArmour().getLevel()*10<getMoney();
+    }
+
+    public boolean armourLevelUp(){
+        if(canArmourLevelUp()){
+            setMoney(getMoney()-getArmour().getLevel()*10);
+            getArmour().levelUp();
+            return true;
+        }
+        return false;
+    }
+
+    public boolean canMagicLevelUp(Integer magicIndex){
+        return magics.get(magicIndex).getLevel()*10<getMoney();
+    }
+
+    public boolean magicLevelUp(Integer magicIndex){
+        if(canMagicLevelUp(magicIndex)){
+            setMoney(getMoney()-magics.get(magicIndex).getLevel()*10);
+            magics.get(magicIndex).levelUp();
+            return true;
+        }
+        return false;
     }
 
 }
