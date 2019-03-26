@@ -203,7 +203,7 @@ private  ObservableList<TableVO> data =
       Tooltip.install(amerImage, tooltip);
 
       Tooltip tooltip2 = new Tooltip();
-      tooltip2.setText("当前武器\n"+Variable.getPlayer().getArmour().getAttributes().toString());
+      tooltip2.setText("当前装备\n"+Variable.getPlayer().getArmour().getAttributes().toString());
       Tooltip.install(equipImage, tooltip2);
 
 
@@ -214,7 +214,7 @@ private  ObservableList<TableVO> data =
             Magic c = it.next();
 
             Tooltip tooltip3 = new Tooltip();
-            tooltip3.setText("名称："+c.getName()+"\n"+"伤害："+c.getValue()+"\n"+"消耗HP："+c.getConsumedMp()+"\n"+"当前等级："+c.getLevel());
+            tooltip3.setText("名称："+c.getName()+"\n"+"伤害："+c.getValue()+"\n"+"消耗MP："+c.getConsumedMp()+"\n"+"当前等级："+c.getLevel());
             ImageView newMagic = new ImageView();
             newMagic.setFitHeight(50);
             newMagic.setFitWidth(50);
@@ -244,7 +244,7 @@ private  ObservableList<TableVO> data =
 
         useMagicBoard.getChildren().clear();
         Tooltip tooltip3 = new Tooltip();
-        tooltip3.setText("名称：普通攻击"+"\n"+"伤害：1点"+"\n"+"消耗HP：无"+"\n");
+        tooltip3.setText("名称：普通攻击"+"\n"+"伤害：计算很复杂"+"\n"+"消耗HP：无"+"\n");
         ImageView newMagic = new ImageView();
         newMagic.setFitHeight(50);
         newMagic.setFitWidth(50);
@@ -486,7 +486,7 @@ private  ObservableList<TableVO> data =
         System.out.println("ets");
         boolean can = Variable.getPlayer().canArmourLevelUp();
         if(can){
-            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION,"是否确认花费"+10*Math.pow(1.2, Variable.getPlayer().getLevel())+"金币升级装备?");
+            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION,"是否确认花费"+10*Variable.getPlayer().getArmour().getLevel()+"金币升级装备?");
             Optional<ButtonType> result = confirmation.showAndWait();
             if(result.isPresent() && result.get() == ButtonType.OK){
                 Variable.getPlayer().armourLevelUp();
@@ -510,7 +510,7 @@ private  ObservableList<TableVO> data =
         System.out.println("ets");
         boolean can = Variable.getPlayer().canWeaponLevelUp();
         if(can){
-            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION,"是否确认花费"+10*Math.pow(1.2, Variable.getPlayer().getLevel())+"金币升级武器?");
+            Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION,"是否确认花费"+10*Variable.getPlayer().getWeapon().getLevel()+"金币升级武器?");
             Optional<ButtonType> result = confirmation.showAndWait();
             if(result.isPresent() && result.get() == ButtonType.OK){
                 Variable.getPlayer().weaponLevelUp();

@@ -152,7 +152,7 @@ public class Battle extends Observable {
                 i++;
             }
             String information="玩家行动，使用魔法-"+magic.getName()+"，";
-            if(magic.getConsumedMp()<Variable.getPlayer().getAttribute("mp")){
+            if(magic.getConsumedMp()>=Variable.getPlayer().getAttribute("mp")){
                 information+="剩余魔法值不足，无法使用该魔法，请重新行动。\n";
                 setChanged();
                 notifyObservers(information);

@@ -75,7 +75,7 @@ public class Character {
     }
 
     public void setArmour(Equipment armour){
-        this.armour=weapon;
+        this.armour=armour;
         constructFinalAttr();
     }
 
@@ -187,20 +187,20 @@ public class Character {
     public List<TableVO> getDecoratedAttributesView(){
         List<TableVO> attr = new ArrayList<>();
 
-        attr.add(new TableVO("防御力——劈砍攻击",getAttribute("def_chop")));
+        attr.add(new TableVO("防御力——劈砍攻击",(double)Math.round(getAttribute("def_chop") * 100) / 100));
 
-        attr.add(new TableVO("防御力——刺击攻击",getAttribute("def_stab")));
+        attr.add(new TableVO("防御力——刺击攻击",(double)Math.round(getAttribute("def_stab") * 100) / 100));
 
-        attr.add(new TableVO("防御力——钝击攻击",getAttribute("def_crush")));
+        attr.add(new TableVO("防御力——钝击攻击",(double)Math.round(getAttribute("def_crush") * 100) / 100));
 
-        attr.add(new TableVO("防御力——冰属性魔法",getAttribute("def_ice")));
+        attr.add(new TableVO("防御力——冰属性魔法",(double)Math.round(getAttribute("def_ice") * 100) / 100));
 
-        attr.add(new TableVO("防御力——火属性魔法",getAttribute("def_flame")));
+        attr.add(new TableVO("防御力——火属性魔法",(double)Math.round(getAttribute("def_flame") * 100) / 100));
 
-        attr.add(new TableVO("防御力——土属性魔法",getAttribute("def_earth")));
+        attr.add(new TableVO("防御力——土属性魔法",(double)Math.round(getAttribute("def_earth") * 100) / 100));
 
-        attr.add(new TableVO("防御力——雷属性魔法",getAttribute("def_lightning")));
-        attr.add(new TableVO("命中率",getAttribute("accuracy")));
+        attr.add(new TableVO("防御力——雷属性魔法",(double)Math.round(getAttribute("def_lightning") * 100) / 100));
+        attr.add(new TableVO("命中率",(double)Math.round(getAttribute("accuracy") * 100) / 100));
 
         return attr;
     }
