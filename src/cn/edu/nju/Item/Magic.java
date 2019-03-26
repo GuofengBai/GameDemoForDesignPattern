@@ -20,4 +20,6 @@ public interface Magic {
 
     void levelUp();
 
+
+
 }

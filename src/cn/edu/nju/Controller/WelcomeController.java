@@ -68,4 +68,7 @@ public class WelcomeController implements Initializable{
 
         choiceType.setItems(types);
     }
+
+
+
 }

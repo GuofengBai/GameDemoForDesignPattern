@@ -184,6 +184,26 @@ public class Character {
         attr.put("accuracy",getAttribute("accuracy"));
         return attr;
     }
+    public List<TableVO> getDecoratedAttributesView(){
+        List<TableVO> attr = new ArrayList<>();
+
+        attr.add(new TableVO("防御力——劈砍攻击",getAttribute("def_chop")));
+
+        attr.add(new TableVO("防御力——刺击攻击",getAttribute("def_stab")));
+
+        attr.add(new TableVO("防御力——钝击攻击",getAttribute("def_crush")));
+
+        attr.add(new TableVO("防御力——冰属性魔法",getAttribute("def_ice")));
+
+        attr.add(new TableVO("防御力——火属性魔法",getAttribute("def_flame")));
+
+        attr.add(new TableVO("防御力——土属性魔法",getAttribute("def_earth")));
+
+        attr.add(new TableVO("防御力——雷属性魔法",getAttribute("def_lightning")));
+        attr.add(new TableVO("命中率",getAttribute("accuracy")));
+
+        return attr;
+    }
 
     public boolean canWeaponLevelUp(){
         return getWeapon().getLevel()*10<getMoney();
@@ -222,6 +242,17 @@ public class Character {
             return true;
         }
         return false;
+    }
+
+
+    public Magic getMagicByName(String name){
+        for (Magic m:magics ) {
+
+            if(m.getName().equals(name)){
+                return m;
+            }
+        }
+        return null;
     }
 
 }

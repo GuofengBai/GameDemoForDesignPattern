@@ -2,7 +2,7 @@ package cn.edu.nju.Entity;
 
 public class TableVO {
     String key;
-    String value;
+    Double value;
 
     public String getKey() {
         return key;
@@ -12,15 +12,15 @@ public class TableVO {
         this.key = key;
     }
 
-    public String getValue() {
+    public Double getValue() {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 
-    public TableVO(String key, String value) {
+    public TableVO(String key, Double value) {
         this.key = key;
         this.value = value;
     }
